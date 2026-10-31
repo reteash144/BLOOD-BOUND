@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#10080d" />
+  <meta name="description" content="BLOODBOUND — a bloodstream combat game prototype." />
+  <title>BLOODBOUND // Bloodstream Protocol</title>
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <main id="app">
+    <div id="game-shell">
+      <div id="game-container" aria-label="BLOODBOUND game canvas"></div>
+      <div class="scanline" aria-hidden="true"></div>
+
+      <section id="main-menu" class="screen-panel menu-screen">
+        <div class="eyebrow">HEMATOLOGY DEFENCE DIVISION // FIELD SIMULATION 01</div>
+        <h1>BLOOD<span>BOUND</span></h1>
+        <p class="tagline">ONE HOST. ONE INVASION. NO ROOM TO BLEED.</p>
+        <div class="menu-rule"></div>
+        <p class="menu-copy">Enter the bloodstream. Break the parasite assault. Identify the pathogen before deploying targeted treatment.</p>
+        <button id="start-button" class="primary-button">INITIALIZE OPERATIVE <span>↗</span></button>
+        <div class="menu-foot"><span>PROTOTYPE BUILD 0.1</span><span>KEYBOARD // DESKTOP</span></div>
+      </section>
+
+      <section id="hud" class="hud hidden" aria-live="polite">
+        <div class="hud-left hud-card">
+          <div class="hud-label">OPERATIVE // VITALS</div>
+          <div class="meter-row"><span>HP</span><div class="meter"><i id="health-fill" class="health-fill"></i></div><b id="health-value">100</b></div>
+          <div class="meter-row"><span>STA</span><div class="meter"><i id="stamina-fill" class="stamina-fill"></i></div><b id="stamina-value">100</b></div>
+          <div class="meter-row"><span>BIO</span><div class="meter"><i id="energy-fill" class="energy-fill"></i></div><b id="energy-value">0</b></div>
+        </div>
+        <div class="hud-boss hud-card">
+          <div class="boss-heading"><span class="hud-label">HOSTILE ENTITY</span><span id="boss-phase">NOT DETECTED</span></div>
+          <div id="boss-name">MALARIA // THE BLOOD REAVER</div>
+          <div class="boss-meter"><i id="boss-fill"></i></div>
+        </div>
+        <div class="hud-right hud-card">
+          <div class="hud-label">ACTIVE SYNDROMES</div>
+          <div id="symptom-list" class="symptom-list"><span class="muted">NONE DETECTED</span></div>
+          <div class="objective-label">CURRENT DIRECTIVE</div>
+          <div id="objective-text">NEUTRALIZE PARASITE VANGUARD</div>
+        </div>
+        <div class="bottom-hud">
+          <div class="controls-hint"><kbd>A</kbd><kbd>D</kbd> MOVE <kbd>W</kbd> JUMP <kbd>S</kbd> BLOCK <kbd>J</kbd> LIGHT <kbd>K</kbd> HEAVY <kbd>L</kbd> SPECIAL <kbd>SPACE</kbd> DODGE</div>
+          <div class="treatment-hint"><kbd>E</kbd> MEDICAL KIT <kbd>Q</kbd> DEPLOY SELECTED <kbd>ESC</kbd> PAUSE</div>
+        </div>
+      </section>
+
+      <section id="pause-menu" class="screen-panel modal-screen hidden">
+        <div class="eyebrow">TACTICAL HOLD // SIMULATION PAUSED</div>
+        <h2>PAUSE</h2>
+        <p>Combat simulation suspended.</p>
+        <button id="resume-button" class="primary-button">RESUME</button>
+        <button id="restart-pause-button" class="secondary-button">RESTART ENCOUNTER</button>
+      </section>
+
+      <section id="medicine-panel" class="screen-panel modal-screen hidden" aria-label="Medicine selection">
+        <div class="eyebrow">FIELD MEDICAL SYSTEM // EDUCATIONAL SIMULATION</div>
+        <h2>SELECT TREATMENT</h2>
+        <p class="panel-subtitle">Selection pauses combat. Effects are simplified game mechanics, not medical instructions.</p>
+        <div id="medicine-options" class="medicine-options"></div>
+        <div class="medicine-detail" id="medicine-detail">Select a treatment to inspect its role.</div>
+        <div class="modal-actions"><button id="deploy-medicine" class="primary-button">DEPLOY SELECTED <kbd>Q</kbd></button><button id="close-medicine" class="secondary-button">RETURN TO COMBAT <kbd>E</kbd></button></div>
+      </section>
+
+      <section id="diagnostic-panel" class="screen-panel modal-screen hidden" aria-label="Diagnostic analysis">
+        <div class="eyebrow">FIELD DIAGNOSTICS // UNKNOWN PARASITE</div>
+        <h2>IDENTIFY THE THREAT</h2>
+        <p class="panel-subtitle">Observed signs suggest an infection. Symptoms alone do not establish a real-world diagnosis.</p>
+        <div class="diagnostic-grid">
+          <div><span class="hud-label">OBSERVED SYMPTOMS</span><ul id="diagnostic-symptoms"></ul></div>
+          <div><span class="hud-label">PATHOGEN CLUES</span><ul><li>Parasite-associated red-cell invasion pattern</li><li>Recurring fever-like pulses</li><li>Infected erythrocyte rupture signature</li></ul></div>
+        </div>
+        <div class="diagnostic-choices">
+          <button data-diagnosis="dengue">DENGUE</button>
+          <button data-diagnosis="malaria">MALARIA</button>
+          <button data-diagnosis="sepsis">SEPSIS</button>
+        </div>
+        <div id="diagnostic-feedback" class="feedback-line">Select the most likely pathogen from the available clues.</div>
+      </section>
+
+      <section id="end-screen" class="screen-panel modal-screen hidden">
+        <div id="end-eyebrow" class="eyebrow">MISSION REPORT</div>
+        <h2 id="end-title">MISSION COMPLETE</h2>
+        <p id="end-copy">The bloodstream is clear.</p>
+        <div id="end-stats" class="end-stats"></div>
+        <button id="restart-end-button" class="primary-button">RUN SIMULATION AGAIN</button>
+        <button id="menu-end-button" class="secondary-button">RETURN TO TITLE</button>
+      </section>
+
+      <aside id="help-panel" class="help-panel hidden">
+        <div class="help-title">FIELD MANUAL <button id="help-close" aria-label="Close controls">×</button></div>
+        <div><kbd>A</kbd> <kbd>D</kbd><span>Move</span></div><div><kbd>W</kbd><span>Jump</span></div><div><kbd>S</kbd><span>Block</span></div><div><kbd>J</kbd><span>Light combo</span></div><div><kbd>K</kbd><span>Heavy strike</span></div><div><kbd>L</kbd><span>Special attack</span></div><div><kbd>SPACE</kbd><span>Dodge</span></div><div><kbd>E</kbd><span>Medicine interface</span></div><div><kbd>Q</kbd><span>Activate treatment</span></div><div><kbd>ESC</kbd><span>Pause / resume</span></div>
+      </aside>
+      <button id="music-toggle" class="music-toggle" type="button" aria-label="Toggle background music" aria-pressed="true">MUSIC: ON</button>
+      <button id="help-toggle" class="help-toggle hidden">CONTROLS ?</button>
+      <div id="toast" class="toast" aria-live="polite"></div>
+    </div>
+  </main>
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

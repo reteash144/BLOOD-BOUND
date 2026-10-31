@@ -1,0 +1,5 @@
+[
+  {"id":"artemether-lumefantrine","name":"Artemether–lumefantrine","category":"PRIMARY TREATMENT","role":"Malaria-specific antimalarial treatment.","gameEffect":"After malaria is identified, weakens the Blood Reaver and deals a tactical burst of parasite damage.","requiresDiagnosis":true,"cooldown":30000},
+  {"id":"paracetamol","name":"Paracetamol","category":"SYMPTOM MANAGEMENT","role":"Fever and pain symptom management.","gameEffect":"Reduces the Fever status penalty. It does not kill the parasite.","requiresDiagnosis":false,"cooldown":22000},
+  {"id":"ors","name":"Oral rehydration solution (ORS)","category":"SUPPORTIVE TREATMENT","role":"Fluid and electrolyte replacement support.","gameEffect":"Restores stamina and reduces the Dehydration status penalty. It does not kill the parasite.","requiresDiagnosis":false,"cooldown":18000}
+]

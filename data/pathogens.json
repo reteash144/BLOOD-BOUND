@@ -1,0 +1,16 @@
+{
+  "malaria": {
+    "name": "Malaria \u2014 The Blood Reaver",
+    "clues": [
+      "Parasite-associated red-cell invasion pattern",
+      "Recurring fever-like pulses",
+      "Infected erythrocyte rupture signature"
+    ],
+    "diagnosticNote": "The simulation identifies the boss from combined fictional pathogen clues. Real diagnosis requires appropriate testing and clinical assessment.",
+    "observedSymptoms": [
+      "Recurring fever-like episodes",
+      "Fatigue and reduced stamina",
+      "Red-cell rupture signatures"
+    ]
+  }
+}

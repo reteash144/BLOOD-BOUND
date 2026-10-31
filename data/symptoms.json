@@ -1,0 +1,6 @@
+[
+  {"id":"fever","name":"FEVER","duration":45000,"severity":2,"consequence":"Periodic fever pulses briefly slow movement.","managedBy":"paracetamol"},
+  {"id":"fatigue","name":"FATIGUE","duration":60000,"severity":1,"consequence":"Slower stamina recovery and reduced maximum stamina.","managedBy":"rest"},
+  {"id":"dehydration","name":"DEHYDRATION","duration":50000,"severity":2,"consequence":"Stamina costs increase and stamina recovery slows.","managedBy":"ors"},
+  {"id":"anaemia","name":"ANAEMIA","duration":90000,"severity":1,"consequence":"Maximum health is temporarily reduced.","managedBy":"parasite control"}
+]
