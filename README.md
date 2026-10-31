@@ -138,3 +138,4 @@ LocalStorage stores the best ordinary-enemy count, the last run result, and the 
 - Combat uses a single horizontal lane with jump height and simple depth cues.
 - The diagnostic task uses fictional encounter clues and a constrained choice set.
 - No real-world medicine database, clinical inference, audio, controller support, or mobile touch controls are included.
+# BLOOD-BOUND
